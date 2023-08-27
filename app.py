@@ -1,10 +1,5 @@
-from utils import (
-    insert_student,
-    print_student_total,
-    print_all_student,
-    save_students,
-    read_students,
-)
+from utils.student import insert_student, find_student
+from utils.file_helper import read_students, save_students
 
 if __name__ == '__main__':
     filename = 'db.json'
@@ -16,10 +11,15 @@ if __name__ == '__main__':
             case 1:
                 insert_student(data)
             case 2:
-                name = input("Enter name of student: ")
-                print_student_total(data, name)
+                name = input("Enter name of student to search: ")
+                student = find_student(data, name)
+                if student:
+                    student.print_details()
+                else:
+                    print("No student found!")
             case 3:
-                print_all_student(data)
+                for student in data:
+                    student.print_details()
             case 4:
                 save_students(data, filename)
                 print("Data has been saved successfully!!")
