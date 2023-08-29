@@ -10,4 +10,8 @@ class Student(db.Model):
     english = db.Column(db.Integer)
 
     def __repr__(self):
-        return "<User {}>".format(self.name)
+        return "<Student {}>".format(self.name)
+
+    @property
+    def total(self):
+        return self.physics + self.maths + self.english
