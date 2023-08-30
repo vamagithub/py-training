@@ -10,8 +10,13 @@ class Student(db.Model):
     english = db.Column(db.Integer)
 
     def __repr__(self):
-        return "<Student {}>".format(self.name)
+        return "<User {}>".format(self.name)
 
-    @property
-    def total(self):
-        return self.physics + self.maths + self.english
+
+class Teacher(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(64), index = True)
+    subject = db.Column(db.String(64))
+
+    def __repr__(self):
+        return f"<Teacher - {self.name}>"

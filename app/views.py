@@ -1,12 +1,12 @@
 from flask import request, redirect, url_for, render_template, jsonify
 
 from app import app, db
-from app.models import Student
-
+from app.models import Student, Teacher
 
 @app.route("/", methods=["GET"])
-def home():
+def home_student():
     return render_template("home.html")
+
 
 @app.route("/insert", methods=["GET", "POST"])
 def insert():
@@ -33,3 +33,30 @@ def insert():
 def student(student_id):
     student = Student.query.get(int(student_id))
     return render_template("student.html", student=student)
+
+
+
+@app.route("/t", methods=["GET"])
+def home_teacher():
+    return render_template("teacher_home.html")
+
+@app.route("/t-insert", methods = ["GET", "POST"])
+def teacher_insert():
+
+    if request.method == "POST":
+        name = request.form.get('name')
+        subject = request.form.get('subject')
+        teacher = Teacher(
+            name = name,
+            subject = subject
+        )
+        db.session.add(teacher)
+        db.session.commit()
+        return redirect(url_for('teacher'), teacher_id = teacher.id)
+    return render_template("teacher_insert.html")
+
+
+
+def teacher(teacher_id):
+    teacher = Teacher.query.get(int(teacher_id))
+    return render_template('teacher.html', teacher = teacher)
