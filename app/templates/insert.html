@@ -1,0 +1,24 @@
+{% extends "includes/_layout.html" %}
+{% block body %}
+<h1>Add a new student</h1>
+<form action="{{ url_for('insert') }}" method="post">
+  <div>
+    <label for="name">Name:</label>
+    <input name="name" id="name" />
+
+    <label for="age">Age:</label>
+    <input name="age" id="age" type="number" />
+  </div>
+
+  <div>
+    <label for="physics">Physics Score:</label>
+    <input name="physics" id="physics" type="number" min="0" max="100" />
+    <label for="maths">Maths Score:</label>
+    <input name="maths" id="maths" type="number" min="0" max="100" />
+    <label for="english">English Score:</label>
+    <input name="english" id="english" type="number" min="0" max="100" />
+  </div>
+
+  <input type="submit"  value="Submit" />
+</form>
+{% endblock %}

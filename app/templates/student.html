@@ -1,0 +1,24 @@
+{% extends "includes/_layout.html" %}
+{% block body %}
+<h1>Student Details</h1>
+<dl>
+  <dt>Name</dt>
+  <dd>{{ student.name }}</dd>
+
+  <dt>Age</dt>
+  <dd>{{ student.age }}</dd>
+
+  <dt>Physics marks</dt>
+  <dd>{{ student.physics }}</dd>
+
+  <dt>Maths marks</dt>
+  <dd>{{ student.maths }}</dd>
+
+  <dt>English marks</dt>
+  <dd>{{ student.english }}</dd>
+
+  <dt>Total marks</dt>
+  <dd>{{ student.total }}</dd>
+</dl>
+
+{% endblock %}
