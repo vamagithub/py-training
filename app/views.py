@@ -52,11 +52,11 @@ def teacher_insert():
         )
         db.session.add(teacher)
         db.session.commit()
-        return redirect(url_for('teacher'), teacher_id = teacher.id)
+        return redirect(url_for('teacher', teacher_id = teacher.id))
     return render_template("teacher_insert.html")
 
 
-
+@app.route("/teacher/<teacher_id>", methods=["GET"])
 def teacher(teacher_id):
     teacher = Teacher.query.get(int(teacher_id))
     return render_template('teacher.html', teacher = teacher)
